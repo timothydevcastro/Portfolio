@@ -99,7 +99,7 @@ const HomeDevFinal: React.FC = () => {
 
           <div className="actions">
             <button className="btn-primary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>View Projects</button>
-            <a href={ResumePDF} target="_blank" rel="noopener noreferrer" download="De_Castro_Resume.pdf" className="btn-ghost">Resume <span className="btn-arrow">↗</span></a>
+            <a href={ResumePDF} target="_blank" rel="noopener noreferrer" className="btn-ghost">Resume <span className="btn-arrow">↗</span></a>
             <div className="popup-container">
               <button className="btn-ghost">Connect() <span className="btn-arrow">→</span></button>
               <div className="popup-menu">
