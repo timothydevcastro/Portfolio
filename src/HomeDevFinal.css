@@ -271,25 +271,31 @@
    ═══════════════════════════════════════════ */
 @media (max-width: 860px) {
   .stage {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column;
     height: auto;
-    min-height: calc(100vh - 57px);
+    min-height: calc(100vh - 72px);
     padding: 48px 32px 80px;
-    gap: 40px;
+    gap: 28px;
     text-align: center;
     align-items: center;
-    justify-items: center;
   }
 
   .home-left {
-    padding-right: 0;
-    align-items: center;
-    max-width: 500px;
+    display: contents;
   }
 
-  .bio { text-align: center; max-width: 380px; }
-  .actions { justify-content: center; }
+  /* ORDER ASSIGNMENTS */
+  .section-tag { order: 1; margin-bottom: -12px; }
+  .name { order: 2; margin-bottom: -12px; }
+  .role-line { order: 3; }
+  .bio { order: 4; text-align: center; max-width: 380px; margin-bottom: 12px; }
+  
+  .center { order: 5; height: auto; align-self: center; margin-bottom: 16px; }
+  
+  .actions { order: 6; justify-content: center; width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .info-card { order: 7; max-width: 340px; margin: 0 auto; }
+  .home-right { display: none; }
   .popup-menu {
     /* on tablet if left is crowded, we might want it bottom */
     top: calc(100% + 8px);
@@ -307,16 +313,12 @@
   }
 
   /* avatar: show, but shrink */
-  .center { height: auto; align-self: flex-end; }
   .avatar-img { 
     width: 100%;
     max-width: 380px;
     height: auto;
     max-height: 50vh;
   }
-  
-  /* Hide floating pills — they're decorative and clutter small screens */
-  .home-right { display: none; }
 
   /* glow: shrink */
   .glow { width: 320px; height: 320px; }
