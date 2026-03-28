@@ -292,15 +292,15 @@
   }
 
   /* ORDER ASSIGNMENTS */
-  .section-tag { order: 1; margin-bottom: -12px; }
-  .name { order: 2; margin-bottom: -12px; }
-  .role-line { order: 3; }
-  .bio { order: 4; text-align: center; max-width: 380px; margin-bottom: 12px; }
+  .stage .section-tag { order: 1; margin-bottom: -12px; }
+  .stage .name { order: 2; margin-bottom: -12px; }
+  .stage .role-line { order: 3; }
+  .stage .bio { order: 4; text-align: center; max-width: 380px; margin-bottom: 12px; }
   
-  .center { order: 5; height: auto; align-self: center; margin-bottom: 16px; }
+  .stage .center { order: 5; height: auto; align-self: center; margin-bottom: 16px; }
   
-  .actions { order: 6; justify-content: center; width: 100%; display: flex; flex-direction: column; gap: 12px; }
-  .info-card { order: 7; max-width: 340px; margin: 0 auto; }
+  .stage .actions { order: 6; justify-content: center; width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .stage .info-card { order: 7; max-width: 340px; margin: 0 auto; }
   .home-right { display: none; }
   .popup-menu {
     /* on tablet if left is crowded, we might want it bottom */
