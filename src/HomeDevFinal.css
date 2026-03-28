@@ -270,6 +270,12 @@
    RESPONSIVE — TABLET (≤860px)
    ═══════════════════════════════════════════ */
 @media (max-width: 860px) {
+  .home-wrapper {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
   .stage {
     display: flex;
     flex-direction: column;
