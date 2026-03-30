@@ -80,29 +80,27 @@ const AboutDevFinal: React.FC = () => {
       {
         id: 'typed1',
         lines: [
-          [{ type:'kw', text:'const' }, { type:'plain', text:' architecture =' }],
-          [{ type:'plain', text:'  ' }, { type:'str', text:'"optimized"' }, { type:'plain', text:';' }]
+          [{ type:'kw', text:'const' }, { type:'plain', text:' architecture = ' }, { type:'str', text:'"optimized"' }, { type:'plain', text:';' }]
         ]
       },
       {
         id: 'typed2',
         lines: [
           [{ type:'kw', text:'def' }, { type:'plain', text:' ' }, { type:'fn', text:'impact' }, { type:'plain', text:'(code):' }],
-          [{ type:'plain', text:'  ' }, { type:'kw', text:'return' }, { type:'plain', text:' ' }, { type:'str', text:'"value"' }]
+          [{ type:'plain', text:'    ' }, { type:'kw', text:'return' }, { type:'plain', text:' ' }, { type:'str', text:'"value"' }]
         ]
       },
       {
         id: 'typed3',
         lines: [
           [{ type:'fn', text:'solve' }, { type:'plain', text:'(challenge)' }],
-          [{ type:'plain', text:'  => ' }, { type:'val', text:'solution' }, { type:'plain', text:';' }]
+          [{ type:'plain', text:'    => ' }, { type:'val', text:'solution' }, { type:'plain', text:';' }]
         ]
       },
       {
         id: 'typed4',
         lines: [
-          [{ type:'plain', text:'{ ' }, { type:'str', text:'"mode"' }, { type:'plain', text:':' }],
-          [{ type:'plain', text:'  ' }, { type:'str', text:'"learning"' }, { type:'plain', text:' }' }]
+          [{ type:'plain', text:'{ ' }, { type:'str', text:'"mode"' }, { type:'plain', text:': ' }, { type:'str', text:'"learning"' }, { type:'plain', text:' }' }]
         ]
       }
     ];
@@ -210,13 +208,15 @@ const AboutDevFinal: React.FC = () => {
           </h1>
 
           <div className="bio-container reveal">
-            <p className="bio-editorial">
-              I'm a software developer specializing in <span className="highlight">Intelligent Systems</span>. 
-              I build end-to-end solutions that turn ideas into working software, seamlessly combining full-stack development with applied AI.
-            </p>
-            <p className="bio-editorial">
-              I care deeply about creating practical tools that reduce manual work, improve workflows, and produce real-world, measurable impact for the people who use them.
-            </p>
+            <div className="bio-box">
+              <p className="bio-editorial">
+                I'm a software developer specializing in <span className="highlight">Intelligent Systems</span>. 
+                I build end-to-end solutions that turn ideas into working software, seamlessly combining full-stack development with applied AI.
+              </p>
+              <p className="bio-editorial">
+                I care deeply about creating practical tools that reduce manual work, improve workflows, and produce real-world, measurable impact for the people who use them.
+              </p>
+            </div>
           </div>
 
           <div className="stats-row reveal">

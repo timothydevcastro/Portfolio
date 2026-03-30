@@ -67,16 +67,23 @@
 }
 .bio-container.visible { opacity: 1; transform: translateY(0); }
 
+.bio-box {
+  background: rgba(22, 163, 74, 0.04);
+  border-left: 3px solid var(--green);
+  padding: 24px 28px;
+  border-radius: 0 8px 8px 0;
+}
+
 .bio-editorial {
   font-size: 14.5px; 
-  color: var(--muted); 
+  color: var(--text); 
   line-height: 1.8; 
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .bio-editorial:last-child { margin-bottom: 0; }
 .bio-editorial .highlight {
-  color: var(--text);
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--green);
 }
 
 /* Stats */
