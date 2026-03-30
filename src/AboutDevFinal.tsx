@@ -240,10 +240,12 @@ const AboutDevFinal: React.FC = () => {
           <div className="code-card reveal">
             <div className="card-bar">
               <div className="dots-container"><div className="dot r"></div><div className="dot y"></div><div className="dot g"></div></div>
-              <span className="card-filename">systems_thinking.ts</span>
             </div>
             <div className="card-body">
-              <p className="card-desc">Designing structured solutions that simplify complex processes and improve how people work.</p>
+              <div className="card-text">
+                <h3 className="card-title">Systems Thinking</h3>
+                <p className="card-desc">Designing structured solutions that simplify complex processes and improve how people work.</p>
+              </div>
               <div className="code-snippet" id="snippet1" data-typed="0">
                 <span className="typed-output" id="typed1"></span><span className="type-cursor" id="cur1"></span>
               </div>
@@ -253,10 +255,12 @@ const AboutDevFinal: React.FC = () => {
           <div className="code-card reveal">
             <div className="card-bar">
               <div className="dots-container"><div className="dot r"></div><div className="dot y"></div><div className="dot g"></div></div>
-              <span className="card-filename">purpose_driven.py</span>
             </div>
             <div className="card-body">
-              <p className="card-desc">Building software with the goal of helping people, supporting communities, and creating practical impact.</p>
+              <div className="card-text">
+                <h3 className="card-title">Purpose-Driven</h3>
+                <p className="card-desc">Building software with the goal of helping people, supporting communities, and creating practical impact.</p>
+              </div>
               <div className="code-snippet" id="snippet2" data-typed="0">
                 <span className="typed-output" id="typed2"></span><span className="type-cursor" id="cur2"></span>
               </div>
@@ -266,10 +270,12 @@ const AboutDevFinal: React.FC = () => {
           <div className="code-card reveal">
             <div className="card-bar">
               <div className="dots-container"><div className="dot r"></div><div className="dot y"></div><div className="dot g"></div></div>
-              <span className="card-filename">problem_solving.js</span>
             </div>
             <div className="card-body">
-              <p className="card-desc">Turning real-world challenges into useful, efficient, and user-friendly systems.</p>
+              <div className="card-text">
+                <h3 className="card-title">Problem Solving</h3>
+                <p className="card-desc">Turning real-world challenges into useful, efficient, and user-friendly systems.</p>
+              </div>
               <div className="code-snippet" id="snippet3" data-typed="0">
                 <span className="typed-output" id="typed3"></span><span className="type-cursor" id="cur3"></span>
               </div>
@@ -279,10 +285,12 @@ const AboutDevFinal: React.FC = () => {
           <div className="code-card reveal">
             <div className="card-bar">
               <div className="dots-container"><div className="dot r"></div><div className="dot y"></div><div className="dot g"></div></div>
-              <span className="card-filename">continuous_growth.json</span>
             </div>
             <div className="card-body">
-              <p className="card-desc">Always learning through building, refining ideas, and improving through real experience.</p>
+              <div className="card-text">
+                <h3 className="card-title">Continuous Growth</h3>
+                <p className="card-desc">Always learning through building, refining ideas, and improving through real experience.</p>
+              </div>
               <div className="code-snippet" id="snippet4" data-typed="0">
                 <span className="typed-output" id="typed4"></span><span className="type-cursor" id="cur4"></span>
               </div>
