@@ -155,27 +155,22 @@ const HomeDevFinal: React.FC = () => {
         <div className="home-right" ref={rightRef}>
           <div className="pill" ref={(el) => { if (el) pillsRef.current[0] = el; }}>
             <div className="pill-dot"></div>
-            <span className="pill-icon">🚀</span>
             LEADER MINDSET
           </div>
           <div className="pill" ref={(el) => { if (el) pillsRef.current[1] = el; }}>
             <div className="pill-dot"></div>
-            <span className="pill-icon">🐍</span>
             PYTHON LOVER
           </div>
           <div className="pill" ref={(el) => { if (el) pillsRef.current[2] = el; }}>
             <div className="pill-dot"></div>
-            <span className="pill-icon">💡</span>
             INNOVATIVE
           </div>
           <div className="pill" ref={(el) => { if (el) pillsRef.current[3] = el; }}>
             <div className="pill-dot"></div>
-            <span className="pill-icon">⚡</span>
             FAST LEARNER
           </div>
           <div className="pill" ref={(el) => { if (el) pillsRef.current[4] = el; }}>
             <div className="pill-dot"></div>
-            <span className="pill-icon">🎯</span>
             PURPOSE DRIVEN
           </div>
         </div>
