@@ -259,6 +259,21 @@
   color: var(--green);
 }
 
+/* TAGS */
+.projects-wrapper .proj-card-tags { 
+  display:flex; flex-wrap:wrap; gap:6px; 
+  padding: 12px 22px 24px; 
+}
+.projects-wrapper .proj-tag {
+  font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:4px 10px; border:1px solid var(--border); border-radius:4px;
+  color:var(--muted); background:var(--surface2);
+  transition:all .2s;
+}
+.projects-wrapper .proj-card:hover .proj-tag {
+  border-color:rgba(22,163,74,.25); color:var(--green); background:rgba(22,163,74,.04);
+}
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
