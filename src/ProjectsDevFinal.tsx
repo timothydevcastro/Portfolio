@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './ProjectsDevFinal.css';
 import KuCognitionImg from './assets/KuCognition_Image.jpg';
 import SupplySenseImg from './assets/Suppliesense_Image.jpg';
@@ -25,7 +25,6 @@ function drawPattern(canvas: HTMLCanvasElement, project: ProjectDef) {
 
   const { colors, shape } = project;
 
-  // base gradient bg
   const bg = ctx.createLinearGradient(0, 0, W, H);
   bg.addColorStop(0, colors[0] + '18');
   bg.addColorStop(1, colors[1] + '10');
@@ -114,13 +113,16 @@ const ProjectsDevFinal: React.FC = () => {
     useRef<HTMLDivElement>(null),
   ];
 
+  // which card is expanded
+  const [expanded, setExpanded] = useState<number | null>(null);
+
+  const toggle = (idx: number) =>
+    setExpanded(prev => (prev === idx ? null : idx));
+
   useEffect(() => {
     const headerRow = headerRowRef.current;
     if (!headerRow) return;
 
-    // (Scroll progress bar is now global in App.tsx)
-
-    // reveal header row
     const headerObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); }
@@ -129,7 +131,6 @@ const ProjectsDevFinal: React.FC = () => {
     }, { threshold: 0.1 });
     headerObs.observe(headerRow);
 
-    // reveal cards + draw canvases
     const patternObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -146,7 +147,6 @@ const ProjectsDevFinal: React.FC = () => {
 
     cardRefs.forEach(ref => { if (ref.current) patternObs.observe(ref.current); });
 
-    // resize — redraw canvases
     const onResize = () => {
       canvasRefs.forEach((ref, idx) => {
         if (ref.current) drawPattern(ref.current, PROJECTS[idx]);
@@ -176,7 +176,7 @@ const ProjectsDevFinal: React.FC = () => {
         <div className="projects-grid">
 
           {/* 01 KuCognition — FEATURED */}
-          <div className="proj-card featured reveal" data-project="0" ref={cardRefs[0]}>
+          <div className={`proj-card featured reveal${expanded === 0 ? ' expanded' : ''}`} data-project="0" ref={cardRefs[0]}>
             <div className="proj-card-visual">
               <canvas ref={canvasRefs[0]}></canvas>
               <img src={KuCognitionImg} alt="KuCognition" className="proj-card-img" />
@@ -186,18 +186,25 @@ const ProjectsDevFinal: React.FC = () => {
             <div className="proj-card-body">
               <div className="proj-card-title">KuCognition</div>
               <div className="proj-impact-line">Classifies 8 nail conditions from ~16,000 images</div>
-              <div className="proj-card-desc" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <p>An end-to-end mobile application designed to identify early visual indicators of potential systemic and cardiovascular diseases through nail image analysis.</p>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <li><strong>Deep Learning Core:</strong> Trained a robust Convolutional Neural Network (EfficientNet-B3 architecture) on approximately 16,000 clinically labeled nail images.</li>
-                  <li><strong>8-Class Detection:</strong> Accurately identifies conditions like Clubbing, Beau's Lines, Terry's Nails, Koilonychia, Leukonychia, Onycholysis, and Melanonychia.</li>
-                  <li><strong>Conversational AI (KuBot):</strong> Integrated an NLP-powered chat assistant to actively guide users through the scanning process and quickly explain medical findings in plain, accessible language.</li>
-                  <li><strong>Full-Stack Architecture:</strong> Built the mobile interface in Flutter, the model inference REST API in FastAPI, and managed user data and storage via Firebase and Supabase.</li>
+              <p className="proj-card-summary">An end-to-end mobile app that identifies early visual indicators of systemic diseases through nail image analysis — powered by a CNN trained on 16,000 clinical images.</p>
+
+              {/* ACCORDION DETAILS */}
+              <div className={`proj-accordion${expanded === 0 ? ' open' : ''}`}>
+                <ul className="proj-detail-list">
+                  <li><strong>Deep Learning Core:</strong> EfficientNet-B3 CNN trained on ~16,000 clinically labeled nail images.</li>
+                  <li><strong>8-Class Detection:</strong> Clubbing, Beau's Lines, Terry's Nails, Koilonychia, Leukonychia, Onycholysis, and Melanonychia.</li>
+                  <li><strong>Conversational AI (KuBot):</strong> NLP-powered chat assistant that explains medical findings in plain, accessible language.</li>
+                  <li><strong>Full-Stack Architecture:</strong> Flutter mobile interface, FastAPI inference server, Firebase and Supabase for data.</li>
                 </ul>
-                <p style={{ marginTop: '6px', fontSize: '10.5px', opacity: 0.7, fontStyle: 'italic' }}>
-                  * Designed as an assistive tool for research and health-risk awareness—not a medical diagnostic tool.
-                </p>
+                <p className="proj-disclaimer">* Designed as an assistive tool for research and health-risk awareness — not a medical diagnostic tool.</p>
+                <div className="proj-accordion-links">
+                  <a href="https://www.youtube.com/watch?v=OhrWbONUQqk" target="_blank" rel="noreferrer" className="proj-drawer-link primary">Watch Demo ▶</a>
+                </div>
               </div>
+
+              <button className="proj-expand-btn" onClick={() => toggle(0)}>
+                {expanded === 0 ? '− Hide Details' : '+ View Details'}
+              </button>
             </div>
             <div className="proj-card-tags">
               <span className="proj-tag">Flutter</span><span className="proj-tag">FastAPI</span>
@@ -205,19 +212,10 @@ const ProjectsDevFinal: React.FC = () => {
               <span className="proj-tag">Firebase</span><span className="proj-tag">Supabase</span>
               <span className="proj-tag">NLP</span>
             </div>
-            <div className="proj-card-drawer">
-              <div className="proj-drawer-challenge">
-                <strong>The challenge</strong>
-                Training a robust CNN on ~16,000 nail images to classify 8 conditions accurately, then making it accessible on mobile with a conversational interface that explains medical findings in plain language.
-              </div>
-              <div className="proj-drawer-links">
-                <a href="https://www.youtube.com/watch?v=OhrWbONUQqk" target="_blank" rel="noreferrer" className="proj-drawer-link primary">Watch Demo ▶</a>
-              </div>
-            </div>
           </div>
 
           {/* 02 SupplySense */}
-          <div className="proj-card reveal" data-project="1" ref={cardRefs[1]}>
+          <div className={`proj-card reveal${expanded === 1 ? ' expanded' : ''}`} data-project="1" ref={cardRefs[1]}>
             <div className="proj-card-visual">
               <canvas ref={canvasRefs[1]}></canvas>
               <img src={SupplySenseImg} alt="SupplySense" className="proj-card-img" />
@@ -226,8 +224,26 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
             <div className="proj-card-body">
               <div className="proj-card-title">SupplySense</div>
-              <div className="proj-impact-line">Smart reorder logic with role-based access & audit trail</div>
-              <p className="proj-card-desc">Full-stack inventory management and reorder planning platform designed for small businesses.</p>
+              <div className="proj-impact-line">Smart reorder logic with role-based access &amp; audit trail</div>
+              <p className="proj-card-summary">Full-stack inventory management and reorder planning platform designed for small businesses.</p>
+
+              <div className={`proj-accordion${expanded === 1 ? ' open' : ''}`}>
+                <ul className="proj-detail-list">
+                  <li><strong>Role-Based Auth:</strong> Secure JWT authentication across Manager and Viewer roles with scoped permissions.</li>
+                  <li><strong>Smart ROP Engine:</strong> Calculates reorder points based on lead time, safety stock, and average demand.</li>
+                  <li><strong>Audit Trail:</strong> Full history of all stock adjustments and reorder events.</li>
+                  <li><strong>Reporting:</strong> Automated CSV export for inventory and reorder reports.</li>
+                </ul>
+                <div className="proj-accordion-links">
+                  <a href="https://suppliesense-frontend.onrender.com/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">View Site →</a>
+                  <div className="proj-link-div"></div>
+                  <a href="https://github.com/timothydevcastro/suppliesense" target="_blank" rel="noreferrer" className="proj-drawer-link secondary">View Source →</a>
+                </div>
+              </div>
+
+              <button className="proj-expand-btn" onClick={() => toggle(1)}>
+                {expanded === 1 ? '− Hide Details' : '+ View Details'}
+              </button>
             </div>
             <div className="proj-card-tags">
               <span className="proj-tag">Next.js</span><span className="proj-tag">React</span>
@@ -235,21 +251,10 @@ const ProjectsDevFinal: React.FC = () => {
               <span className="proj-tag">PostgreSQL</span><span className="proj-tag">JWT</span>
               <span className="proj-tag">Tailwind CSS</span>
             </div>
-            <div className="proj-card-drawer">
-              <div className="proj-drawer-challenge" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <strong>Features & Details</strong>
-                <p>Designed a scalable permission model across Manager and Viewer roles with secure JWT authentication. Engineered smart reorder point (ROP) calculations based on lead time, safety stock, and average demand, integrated with real-time stock adjustments, full audit trails, and automated CSV export reporting.</p>
-              </div>
-              <div className="proj-drawer-links">
-                <a href="https://suppliesense-frontend.onrender.com/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">View Site →</a>
-                <div className="proj-link-div"></div>
-                <a href="https://github.com/timothydevcastro/suppliesense" target="_blank" rel="noreferrer" className="proj-drawer-link secondary">View Source →</a>
-              </div>
-            </div>
           </div>
 
           {/* 03 Duty Hours Tracker */}
-          <div className="proj-card reveal" data-project="2" ref={cardRefs[2]}>
+          <div className={`proj-card reveal${expanded === 2 ? ' expanded' : ''}`} data-project="2" ref={cardRefs[2]}>
             <div className="proj-card-visual">
               <canvas ref={canvasRefs[2]}></canvas>
               <img src={DutyTrackerImg} alt="Duty Hours Tracker" className="proj-card-img" />
@@ -259,22 +264,28 @@ const ProjectsDevFinal: React.FC = () => {
             <div className="proj-card-body">
               <div className="proj-card-title">Duty Hours Tracker</div>
               <div className="proj-impact-line">Replaces manual spreadsheet tracking for DLSU-D scholars</div>
-              <p className="proj-card-desc">Web-based duty hours tracking system built for Financial Aid Scholars of DLSU–Dasmariñas.</p>
+              <p className="proj-card-summary">Lightweight, zero-infrastructure web app for Financial Aid Scholars of DLSU–Dasmariñas to log and track required duty hours.</p>
+
+              <div className={`proj-accordion${expanded === 2 ? ' open' : ''}`}>
+                <ul className="proj-detail-list">
+                  <li><strong>Client-Side Storage:</strong> Runs entirely on localStorage — no backend needed.</li>
+                  <li><strong>Rule-Based Validation:</strong> Configurable duty schedule validation and automatic hour computation.</li>
+                  <li><strong>Event Tracking:</strong> Credit tracking for different event types with printable CSV export.</li>
+                </ul>
+                <div className="proj-accordion-links">
+                  <a href="https://timothydevcastro.github.io/scholar-duty-tracker/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">View Site →</a>
+                  <div className="proj-link-div"></div>
+                  <a href="https://github.com/timothydevcastro/scholar-duty-tracker" target="_blank" rel="noreferrer" className="proj-drawer-link secondary">View Source →</a>
+                </div>
+              </div>
+
+              <button className="proj-expand-btn" onClick={() => toggle(2)}>
+                {expanded === 2 ? '− Hide Details' : '+ View Details'}
+              </button>
             </div>
             <div className="proj-card-tags">
               <span className="proj-tag">HTML5</span><span className="proj-tag">CSS3</span>
               <span className="proj-tag">JavaScript</span><span className="proj-tag">GitHub Pages</span>
-            </div>
-            <div className="proj-card-drawer">
-              <div className="proj-drawer-challenge" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <strong>Features & Details</strong>
-                <p>Replaces a fragile spreadsheet workflow entirely with a lightweight, zero-infrastructure web app that runs strictly client-side via localStorage API. Built with configurable rule-based validation for duty schedules, automatic hour computation, event credit tracking, and printable CSV record export.</p>
-              </div>
-              <div className="proj-drawer-links">
-                <a href="https://timothydevcastro.github.io/scholar-duty-tracker/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">View Site →</a>
-                <div className="proj-link-div"></div>
-                <a href="https://github.com/timothydevcastro/scholar-duty-tracker" target="_blank" rel="noreferrer" className="proj-drawer-link secondary">View Source →</a>
-              </div>
             </div>
           </div>
 
