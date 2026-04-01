@@ -83,12 +83,12 @@ const EducationDevFinal: React.FC = () => {
             </div>
 
             <div className="edu-year-entry edu-reveal-item">
-              <div><span className="edu-year-label">1st Year: </span><span className="edu-year-detail">Top 4 (University-wide); Top 1 in CICS</span></div>
+              <div className="edu-year-text"><span className="edu-year-label">1st Year: </span><span className="edu-year-detail">Top 4 (University-wide); Top 1 in CICS</span></div>
               <div className="edu-year-gpa">GPA: <span>3.97</span></div>
             </div>
 
             <div className="edu-year-entry edu-reveal-item">
-              <div><span className="edu-year-label">2nd Year: </span><span className="edu-year-detail">Top 3 in CICS</span></div>
+              <div className="edu-year-text"><span className="edu-year-label">2nd Year: </span><span className="edu-year-detail">Top 3 in CICS</span></div>
               <div className="edu-year-gpa">GPA: <span>3.98</span></div>
             </div>
 
