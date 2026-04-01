@@ -72,49 +72,43 @@ const EducationDevFinal: React.FC = () => {
         <div className="edu-col edu-reveal">
           <div className="edu-col-heading"><span className="slash">// </span>Education</div>
 
-          <div className="edu-inner-card edu-reveal">
-            <div className="edu-card-bar">
-              <div className="edu-wdot r"></div><div className="edu-wdot y"></div><div className="edu-wdot g"></div>
-              <span className="edu-card-filename">ACADEMIC_PROFILE.TS</span>
+          <div className="edu-content-block edu-reveal">
+            
+            <div className="edu-school-row">
+              <div>
+                <div className="edu-school-name">De La Salle University –<br/>Dasmariñas</div>
+                <div className="edu-school-degree">B.S. Computer Science (Intelligent Systems)</div>
+              </div>
+              <div className="edu-school-period">2023 –<br/>Present</div>
             </div>
-            <div className="edu-card-body">
 
-              <div className="edu-school-row">
-                <div>
-                  <div className="edu-school-name">De La Salle University –<br/>Dasmariñas</div>
-                  <div className="edu-school-degree">B.S. Computer Science (Intelligent Systems)</div>
-                </div>
-                <div className="edu-school-period">2023 –<br/>Present</div>
-              </div>
-
-              <div className="edu-year-entry edu-reveal-item">
-                <div><span className="edu-year-label">1st Year: </span><span className="edu-year-detail">Top 4 (University-wide); Top 1 in CICS</span></div>
-                <div className="edu-year-gpa">GPA: <span>3.97</span></div>
-              </div>
-
-              <div className="edu-year-entry edu-reveal-item">
-                <div><span className="edu-year-label">2nd Year: </span><span className="edu-year-detail">Top 3 in CICS</span></div>
-                <div className="edu-year-gpa">GPA: <span>3.98</span></div>
-              </div>
-
-              <div className="edu-pill-row">
-                <div className="edu-pill edu-reveal-item">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{flexShrink:0}}>
-                    <circle cx="7" cy="5" r="3.2" stroke="#16a34a" strokeWidth="1.3"/>
-                    <path d="M3 13c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round"/>
-                    <path d="M7 8v2M5.5 12h3" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round"/>
-                  </svg>
-                  Student Assistant Scholar — Language &amp; Literature / Graduate Studies
-                </div>
-                <div className="edu-pill edu-reveal-item">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{flexShrink:0}}>
-                    <path d="M7 1.5l1.5 3 3.3.5-2.4 2.3.6 3.2L7 9l-3 1.5.6-3.2L2.2 5l3.3-.5L7 1.5z" stroke="#16a34a" strokeWidth="1.2" strokeLinejoin="round"/>
-                  </svg>
-                  SIKAPTala 2025 — National Quiz Bee · 4th Place
-                </div>
-              </div>
-
+            <div className="edu-year-entry edu-reveal-item">
+              <div><span className="edu-year-label">1st Year: </span><span className="edu-year-detail">Top 4 (University-wide); Top 1 in CICS</span></div>
+              <div className="edu-year-gpa">GPA: <span>3.97</span></div>
             </div>
+
+            <div className="edu-year-entry edu-reveal-item">
+              <div><span className="edu-year-label">2nd Year: </span><span className="edu-year-detail">Top 3 in CICS</span></div>
+              <div className="edu-year-gpa">GPA: <span>3.98</span></div>
+            </div>
+
+            <div className="edu-pill-row">
+              <div className="edu-pill edu-reveal-item">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{flexShrink:0}}>
+                  <circle cx="7" cy="5" r="3.2" stroke="#16a34a" strokeWidth="1.3"/>
+                  <path d="M3 13c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round"/>
+                  <path d="M7 8v2M5.5 12h3" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round"/>
+                </svg>
+                Student Assistant Scholar — Language &amp; Literature / Graduate Studies
+              </div>
+              <div className="edu-pill edu-reveal-item">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{flexShrink:0}}>
+                  <path d="M7 1.5l1.5 3 3.3.5-2.4 2.3.6 3.2L7 9l-3 1.5.6-3.2L2.2 5l3.3-.5L7 1.5z" stroke="#16a34a" strokeWidth="1.2" strokeLinejoin="round"/>
+                </svg>
+                SIKAPTala 2025 — National Quiz Bee · 4th Place
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -122,12 +116,8 @@ const EducationDevFinal: React.FC = () => {
         <div className="edu-col edu-reveal">
           <div className="edu-col-heading"><span className="slash">// </span>Certifications</div>
 
-          <div className="edu-inner-card edu-reveal">
-            <div className="edu-card-bar">
-              <div className="edu-wdot r"></div><div className="edu-wdot y"></div><div className="edu-wdot g"></div>
-              <span className="edu-card-filename">VERIFIED_ASSETS.JSON</span>
-            </div>
-
+          <div className="edu-content-block edu-reveal">
+            
             <div className="edu-cert-list">
               {[
                 'CS50P (Harvard University / edX)',
@@ -149,6 +139,7 @@ const EducationDevFinal: React.FC = () => {
               <span className="edu-footer-note">// <span>ALL CREDENTIALS VERIFIED BY 2024</span></span>
               <a href="#" className="edu-view-btn">View_Certificates()</a>
             </div>
+
           </div>
         </div>
 
