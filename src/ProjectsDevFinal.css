@@ -70,7 +70,8 @@
 .projects-wrapper .projects-grid {
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap:20px;
+  row-gap: 40px; /* Increased separation between featured row and bottom row */
+  column-gap: 20px;
 }
 .projects-wrapper .proj-card.featured { grid-column: 1 / -1; }
 
@@ -97,12 +98,15 @@
     width: 45%; height: auto;
     border-bottom: none; border-right: 1px solid var(--border);
   }
+  /* Remove absolute tags to prevent overlap on expand */
   .projects-wrapper .proj-card.featured .proj-card-body {
-    flex: 1; padding: 28px 32px;
+    flex: 1; padding: 28px 32px 100px; /* Added large bottom padding for tags */
   }
   .projects-wrapper .proj-card.featured .proj-card-tags {
     position: absolute; bottom: 0; right: 0; width: 55%;
-    padding: 0 32px 24px;
+    padding: 24px 32px;
+    background: var(--surface); /* Ensure tags always have background */
+    border-top: 1px solid var(--border-subtle);
   }
 }
 
