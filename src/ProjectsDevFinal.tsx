@@ -182,7 +182,7 @@ const ProjectsDevFinal: React.FC = () => {
               <div className="proj-accordion">
                 <ul className="proj-detail-list">
                   <li><strong>Deep Learning Core:</strong> EfficientNet-B3 CNN trained on ~16,000 clinically labeled nail images.</li>
-                  <li><strong>8-Class Detection:</strong> Clubbing, Beau's Lines, Terry's Nails, Koilonychia, Leukonychia, Onycholysis, and Melanonychia.</li>
+                  <li><strong>8-Class Detection:</strong> Acral Lentiginous Melanoma, Beau's Lines, Bluish Nail, Clubbing, Healthy Nail, Koilonychia, Onychogryphosis, and Pitting.</li>
                   <li><strong>Conversational AI (KuBot):</strong> NLP-powered chat assistant that explains medical findings in plain, accessible language.</li>
                   <li><strong>Full-Stack Architecture:</strong> Flutter mobile interface, FastAPI inference server, Firebase and Supabase for data.</li>
                 </ul>
