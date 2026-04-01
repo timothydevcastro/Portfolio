@@ -90,37 +90,26 @@
 @keyframes ct-radar{0%{transform:scale(1);opacity:.8;}100%{transform:scale(2.8);opacity:0;}}
 
 .contact-wrapper .ct-left-body {
-  font-size:13px;color:var(--muted);line-height:1.85;
-  border-left:2px solid var(--green-dim);padding-left:16px;
-  transition:border-color .3s;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size:15px; font-weight: 450; color:var(--muted); line-height:1.75;
+  max-width: 480px;
 }
-.contact-wrapper .ct-left-body:hover{border-left-color:var(--green);}
 
 .contact-wrapper .ct-btn-primary {
   display:inline-flex;align-items:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
-  padding:13px 24px;background:var(--green);color:#fff;
-  border:none;border-radius:9px;cursor:pointer;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size:13.5px;font-weight:600;
+  padding:14px 28px;background:var(--green);color:#fff;
+  border:none;border-radius:12px;cursor:pointer;
   text-decoration:none;width:fit-content;transition:all .25s;
 }
 .contact-wrapper .ct-btn-primary:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 8px 24px rgba(22,163,74,.3);}
 .contact-wrapper .ct-btn-primary .arr{transition:transform .2s;}
 .contact-wrapper .ct-btn-primary:hover .arr{transform:translateX(4px);}
 
-.contact-wrapper .ct-btn-ghost {
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
-  padding:13px 24px;background:transparent;color:var(--text);
-  border:1px solid var(--border);border-radius:9px;cursor:pointer;
-  text-decoration:none;width:fit-content;transition:all .25s;
-}
-.contact-wrapper .ct-btn-ghost:hover{border-color:var(--green);color:var(--green);background:var(--green-dim);}
-.contact-wrapper .ct-btn-ghost .arr{transition:transform .2s;}
-.contact-wrapper .ct-btn-ghost:hover .arr{transform:translateY(2px);}
-
 /* RIGHT */
 .contact-wrapper .ct-right {
-  display:flex;flex-direction:column;gap:8px;
+  display:flex;flex-direction:column;gap:12px;
   opacity:0;transform:translateY(20px);
   transition:opacity .7s .15s ease,transform .7s .15s ease;
 }
@@ -129,28 +118,30 @@
 /* contact row */
 .contact-wrapper .contact-row {
   display:flex;align-items:center;gap:16px;
-  padding:18px 20px;
+  padding:20px 24px;
   background:var(--surface);
   border:1px solid var(--border);
-  border-radius:10px;
+  border-radius:16px;
   text-decoration:none;color:var(--text);
   opacity:0;
-  transition:opacity .3s ease, border-color .2s, box-shadow .2s, transform .2s;
+  transition:opacity .3s ease, border-color .2s, box-shadow .2s, transform .2s, background .2s;
   position:relative;overflow:hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.02);
 }
 .contact-wrapper .contact-row.compiled{opacity:1;}
 .contact-wrapper .contact-row:hover {
   border-color:var(--green-light);
-  box-shadow:0 4px 20px rgba(22,163,74,.08);
+  box-shadow:0 8px 30px rgba(22,163,74,.1);
   transform:translateX(-3px);
+  background: var(--surface);
 }
-.contact-wrapper .contact-row.static:hover{transform:none;border-color:var(--border);box-shadow:none;cursor:default;}
+.contact-wrapper .contact-row.static:hover{transform:none;border-color:var(--border);box-shadow:0 4px 14px rgba(0,0,0,0.02);cursor:default;background:var(--surface);}
 
 /* shimmer sweep */
 .contact-wrapper .contact-row::after {
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 0%,rgba(22,163,74,.07) 50%,transparent 100%);
+  background:linear-gradient(90deg,transparent 0%,rgba(22,163,74,.05) 50%,transparent 100%);
   transform:translateX(-100%);
   transition:none;
   pointer-events:none;
@@ -159,30 +150,35 @@
 .contact-wrapper .contact-row.static::after{display:none;}
 
 .contact-wrapper .row-icon {
-  width:38px;height:38px;border-radius:8px;
+  width:42px;height:42px;border-radius:10px;
   background:var(--surface2);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:background .2s;
+  flex-shrink:0;transition:all .2s;
 }
-.contact-wrapper .contact-row:hover .row-icon{background:var(--green-dim);}
-.contact-wrapper .contact-row.static:hover .row-icon{background:var(--surface2);}
-.contact-wrapper .row-icon svg{width:16px;height:16px;}
+.contact-wrapper .contact-row:hover .row-icon{background:var(--green-dim); border-color: var(--green-light);}
+.contact-wrapper .contact-row.static:hover .row-icon{background:var(--surface2); border-color: var(--border);}
+.contact-wrapper .row-icon svg{width:18px;height:18px;}
 
 .contact-wrapper .row-body{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0;}
-.contact-wrapper .row-top{display:flex;align-items:center;gap:10px;}
+.contact-wrapper .row-top{display:flex;align-items:center;gap:12px;}
 .contact-wrapper .row-label {
+  font-family: system-ui, -apple-system, sans-serif;
   font-size:9.5px;font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;color:var(--muted);flex-shrink:0;
 }
 .contact-wrapper .row-divider{width:1px;height:10px;background:var(--border);flex-shrink:0;}
 .contact-wrapper .row-value {
-  font-size:13px;font-weight:500;color:var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size:14px;font-weight:600;color:var(--text);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   transition:color .2s;
 }
 .contact-wrapper .contact-row:hover .row-value{color:var(--green);}
 .contact-wrapper .contact-row.static:hover .row-value{color:var(--text);}
-.contact-wrapper .row-sub{font-size:11px;color:var(--muted);line-height:1.4;}
+.contact-wrapper .row-sub{
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size:12px;color:var(--muted);line-height:1.4;
+}
 .contact-wrapper .row-arrow{font-size:14px;color:var(--border);transition:transform .2s,color .2s;flex-shrink:0;}
 .contact-wrapper .contact-row:hover .row-arrow{transform:translateX(3px);color:var(--green);}
 .contact-wrapper .contact-row.static .row-arrow{display:none;}
