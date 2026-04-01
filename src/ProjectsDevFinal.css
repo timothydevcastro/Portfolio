@@ -78,13 +78,15 @@
 /* BASE CARD */
 .projects-wrapper .proj-card {
   background:var(--surface);
-  border:1px solid var(--border);
+  border:1px solid rgba(0,0,0,0.08); /* Slightly more defined than the generic border */
   border-radius:16px;
   overflow:hidden;
   display:flex; flex-direction:column;
   position:relative;
   opacity:0; transform:translateY(28px);
-  transition:opacity .6s ease, transform .6s ease, border-color .3s, box-shadow .3s;
+  /* Added a soft persistent shadow for depth */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.02);
+  transition: opacity .6s ease, transform .6s ease, border-color .3s, box-shadow .3s;
 }
 .projects-wrapper .proj-card.visible{opacity:1;transform:translateY(0);}
 
@@ -96,7 +98,7 @@
   }
   .projects-wrapper .proj-card.featured .proj-card-visual {
     width: 45%; height: auto;
-    border-bottom: none; border-right: 1px solid var(--border);
+    border-bottom: none; border-right: 1px solid rgba(0,0,0,0.08);
   }
   /* Remove absolute tags to prevent overlap on expand */
   .projects-wrapper .proj-card.featured .proj-card-body {
@@ -106,7 +108,7 @@
     position: absolute; bottom: 0; right: 0; width: 55%;
     padding: 24px 32px;
     background: var(--surface); /* Ensure tags always have background */
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid rgba(0,0,0,0.05);
   }
 }
 
@@ -115,7 +117,9 @@
 .projects-wrapper .proj-card:nth-child(3){transition-delay:.35s;}
 .projects-wrapper .proj-card:hover{
   border-color:var(--green-light);
-  box-shadow:0 16px 48px rgba(22,163,74,.10);
+  /* More dramatic hover elevation */
+  box-shadow: 0 20px 40px rgba(22,163,74,0.08), 0 8px 16px rgba(0,0,0,0.04);
+  transform: translateY(-4px);
 }
 
 /* GENERATIVE CANVAS HEADER */
