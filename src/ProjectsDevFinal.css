@@ -66,14 +66,13 @@
 .projects-wrapper .proj-see-all-arrow{transition:transform .2s;}
 .projects-wrapper .proj-see-all:hover .proj-see-all-arrow{transform:translateX(3px);}
 
-/* ASYMMETRIC GRID */
+/* GRID */
 .projects-wrapper .projects-grid {
   display:grid;
-  grid-template-columns: 1.55fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
   gap:20px;
 }
-.projects-wrapper .proj-card.featured { grid-row: 1 / 3; }
+.projects-wrapper .proj-card.featured { grid-column: 1 / -1; }
 
 /* BASE CARD */
 .projects-wrapper .proj-card {
