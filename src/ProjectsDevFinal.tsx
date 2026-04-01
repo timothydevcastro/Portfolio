@@ -139,8 +139,8 @@ const ProjectsDevFinal: React.FC = () => {
           const idx = parseInt(card.dataset.project || '0', 10);
           const cv = canvasRefs[idx].current;
           if (cv) setTimeout(() => drawPattern(cv, PROJECTS[idx]), 80);
-        } else {
-          e.target.classList.remove('visible');
+          // Once visible, stop observing so accordion resize doesn't remove class
+          patternObs.unobserve(card);
         }
       });
     }, { threshold: 0.1 });
