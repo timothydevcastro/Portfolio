@@ -24,37 +24,7 @@ html {
   --fn:          #1d4ed8;
   --str:         #16a34a;
   --val:         #c2410c;
-  
-  /* Shared layout tokens */
-  --glass-bg:    rgba(255, 255, 255, 0.65);
 }
-
-:root[data-theme='dark'] {
-  --bg:          #0a0f0b;
-  --surface:     #121a14;
-  --surface2:    #1a241c;
-  --border:      #263629;
-  --green:       #22c55e;
-  --green-light: #4ade80;
-  --green-dim:   rgba(34, 197, 94, 0.1);
-  --green-glow:  rgba(34, 197, 94, 0.18);
-  --text:        #e0e8e2;
-  --muted:       #8a9c8f;
-  --kw:          #a78bfa;
-  --fn:          #60a5fa;
-  --str:         #4ade80;
-  --val:         #fb923c;
-
-  /* Shared layout tokens */
-  --glass-bg:    rgba(18, 26, 20, 0.65);
-}
-
-/* Base Body Update for dark mode transitions */
-body {
-  background-color: var(--bg);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 
 /* ── GLOBAL SCROLL PROGRESS BAR ── */
 .global-scroll-progress {
