@@ -211,14 +211,18 @@ const SkillsDevFinal: React.FC = () => {
     const headerObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          wrapperRef.current?.querySelectorAll('.sum-card').forEach((c, i) => {
-            setTimeout(() => c.classList.add('visible'), 200 + i * 120);
-          });
+          // Small delay so browser paints opacity:0 first,
+          // ensuring the CSS transition has something to animate from.
+          setTimeout(() => {
+            e.target.classList.add('visible');
+            wrapperRef.current?.querySelectorAll('.sum-card').forEach((c, i) => {
+              setTimeout(() => c.classList.add('visible'), 200 + i * 120);
+            });
+          }, 80);
           headerObs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+    }, { threshold: 0.05 });
     headerObs.observe(header);
 
     // reveal — graph
