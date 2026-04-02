@@ -9,14 +9,23 @@ import EducationDevFinal from './EducationDevFinal';
 import ContactDevFinal from './ContactDevFinal';
 
 type Section = 'Home' | 'About' | 'Skills' | 'Projects' | 'Education' | 'Contact';
+type Theme = 'light' | 'dark';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>('Home');
+  const [theme, setTheme] = useState<Theme>('light');
   const progressRef = useRef<HTMLDivElement>(null);
   const backTopRef = useRef<HTMLButtonElement>(null);
   const tickerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // ── Theme initialization ──
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const sysPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme ? savedTheme : (sysPrefersDark ? 'dark' : 'light');
+    setTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
+
     const sections = ['home', 'about', 'skills', 'projects', 'education', 'contact'];
 
     // ── Scroll-spy for active nav link ──
@@ -65,9 +74,18 @@ const App: React.FC = () => {
     };
   }, []);
 
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const newTheme = prev === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      return newTheme;
+    });
+  };
+
   return (
     <>
-      <Navbar active={activeSection} />
+      <Navbar active={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <div className="global-scroll-progress" ref={progressRef}></div>
       <HomeDevFinal />
       <AboutDevFinal />

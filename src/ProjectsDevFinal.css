@@ -150,7 +150,7 @@
 .projects-wrapper .proj-card-num {
   position:absolute; top:14px; left:14px;
   font-family:'Syne',sans-serif; font-weight:800; font-size:11px;
-  color:var(--muted); background:rgba(255,255,255,.88);
+  color:var(--text); background:var(--surface);
   padding:3px 9px; border-radius:999px;
   backdrop-filter:blur(6px); border:1px solid var(--border);
   letter-spacing:.06em;
