@@ -137,7 +137,7 @@ const EducationDevFinal: React.FC = () => {
 
             <div className="edu-cert-footer edu-reveal-item">
               <span className="edu-footer-note">// <span>ALL CREDENTIALS VERIFIED BY 2024</span></span>
-              <a href="#" className="edu-view-btn">View_Certificates()</a>
+              <a href="https://github.com/timothydevcastro/certifications" target="_blank" rel="noopener noreferrer" className="edu-view-btn">View_Certificates()</a>
             </div>
 
           </div>
