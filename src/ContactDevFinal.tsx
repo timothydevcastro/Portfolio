@@ -262,6 +262,16 @@ const ContactDevFinal: React.FC = () => {
           <span className="ticker-item ticker-sep">◆</span>
         </div>
       </div>
+      <footer className="ct-footer ct-reveal">
+        <div className="ct-footer-content">
+          <div className="ct-footer-left">
+            <span className="ct-copy">© 2025 <span>TRDC</span> · Timothy De Castro</span>
+          </div>
+          <div className="ct-footer-right">
+            <span className="ct-footer-tag">Designed & Built with <span>Purpose</span></span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
