@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './ProjectsDevFinal.css';
-import KuCognitionImg from './assets/KuCognition_Image.jpg';
-import SupplySenseImg from './assets/Suppliesense_Image.jpg';
-import DutyTrackerImg from './assets/DutyTracker_Image.jpg';
+import KuCognitionImg from './assets/images/KuCognition_Image.jpg';
+import SupplySenseImg from './assets/images/Suppliesense_Image.jpg';
+import DutyTrackerImg from './assets/images/DutyTracker_Image.jpg';
 
 interface ProjectDef {
   colors: string[];

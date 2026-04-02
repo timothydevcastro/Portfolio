@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './ContactDevFinal.css';
-import ResumePDF from './assets/De_Castro_Resume.pdf';
+import ResumePDF from './assets/docs/De_Castro_Resume.pdf';
 
 const ContactDevFinal: React.FC = () => {
   const wrapperRef  = useRef<HTMLDivElement>(null);

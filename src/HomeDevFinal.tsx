@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './HomeDevFinal.css';
-import homeImage from './assets/home_image.png';
-import ResumePDF from './assets/De_Castro_Resume.pdf';
+import homeImage from './assets/images/home_image.png';
+import ResumePDF from './assets/docs/De_Castro_Resume.pdf';
 
 const HomeDevFinal: React.FC = () => {
   const rightRef = useRef<HTMLDivElement>(null);
