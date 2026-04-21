@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import './ProjectsDevFinal.css';
-import KuCognitionImg from './assets/images/KuCognition_Image.jpg';
-import SupplySenseImg from './assets/images/Suppliesense_Image.jpg';
-import DutyTrackerImg from './assets/images/DutyTracker_Image.jpg';
+import KuCognitionImg from './assets/images/mockup_kucognition.png';
+import SupplySenseImg from './assets/images/mockup_supply.png';
+import DutyTrackerImg from './assets/images/mockup_dutytracker.png';
+import ScanArchiveImg from './assets/images/mockup_scanarchive.png';
 
 interface ProjectDef {
   colors: string[];
@@ -13,6 +14,8 @@ const PROJECTS: ProjectDef[] = [
   { colors: ['#16a34a', '#4ade80', '#7c3aed', '#a78bfa'], shape: 'organic' },
   { colors: ['#1d4ed8', '#60a5fa', '#16a34a', '#34d399'], shape: 'grid'    },
   { colors: ['#d97706', '#fbbf24', '#16a34a', '#4ade80'], shape: 'lines'   },
+  { colors: ['#c026d3', '#f472b6', '#3b82f6', '#2dd4bf'], shape: 'organic' },
+  { colors: ['#0f172a', '#475569', '#3b82f6', '#38bdf8'], shape: 'lines'   },
 ];
 
 function drawPattern(canvas: HTMLCanvasElement, project: ProjectDef) {
@@ -80,8 +83,12 @@ const ProjectsDevFinal: React.FC = () => {
     useRef<HTMLCanvasElement>(null),
     useRef<HTMLCanvasElement>(null),
     useRef<HTMLCanvasElement>(null),
+    useRef<HTMLCanvasElement>(null),
+    useRef<HTMLCanvasElement>(null),
   ];
   const cardRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -126,31 +133,33 @@ const ProjectsDevFinal: React.FC = () => {
 
     // ── ACCORDION via pure DOM (no React state = no re-render = no flicker) ──
     const btns = (wrapperRef.current ?? document).querySelectorAll<HTMLButtonElement>('.proj-expand-btn');
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card     = btn.closest<HTMLElement>('.proj-card')!;
-        const panel    = card.querySelector<HTMLElement>('.proj-accordion')!;
-        const isOpen   = panel.classList.contains('open');
+    const onBtnClick = (e: Event) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const card     = btn.closest<HTMLElement>('.proj-card')!;
+      const panel    = card.querySelector<HTMLElement>('.proj-accordion')!;
+      const isOpen   = panel.classList.contains('open');
 
-        // collapse all other cards first
-        (wrapperRef.current ?? document).querySelectorAll<HTMLElement>('.proj-accordion.open').forEach(p => {
-          p.classList.remove('open');
-          const b = p.closest('.proj-card')?.querySelector<HTMLButtonElement>('.proj-expand-btn');
-          if (b) b.textContent = '+ View Details';
-        });
-
-        // toggle this one
-        if (!isOpen) {
-          panel.classList.add('open');
-          btn.textContent = '− Hide Details';
-        }
+      // collapse all other cards first
+      (wrapperRef.current ?? document).querySelectorAll<HTMLElement>('.proj-accordion.open').forEach(p => {
+        p.classList.remove('open');
+        const b = p.closest('.proj-card')?.querySelector<HTMLButtonElement>('.proj-expand-btn');
+        if (b) b.textContent = '+ View Details';
       });
-    });
+
+      // toggle this one
+      if (!isOpen) {
+        panel.classList.add('open');
+        btn.textContent = '− Hide Details';
+      }
+    };
+    
+    btns.forEach(btn => btn.addEventListener('click', onBtnClick));
 
     return () => {
       window.removeEventListener('resize', onResize);
       headerObs.disconnect();
       patternObs.disconnect();
+      btns.forEach(btn => btn.removeEventListener('click', onBtnClick));
     };
   }, []);
 
@@ -204,24 +213,50 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
           </div>
 
-          {/* 02 SupplySense */}
-          <div className="proj-card reveal" data-project="1" ref={cardRefs[1]}>
+          {/* 
+             02 Thesis (Placeholder) — FEATURED 
+          <div className="proj-card featured reveal" data-project="1" ref={cardRefs[1]}>
             <div className="proj-card-visual">
               <canvas ref={canvasRefs[1]}></canvas>
-              <img src={SupplySenseImg} alt="SupplySense" className="proj-card-img" />
               <span className="proj-card-num">02</span>
+              <span className="proj-card-status status-wip">◐ In Progress</span>
+            </div>
+            <div className="proj-card-body">
+              <div className="proj-card-title">[ Thesis Project pending details ]</div>
+              <div className="proj-impact-line">Pending major impact statement from user</div>
+              <p className="proj-card-summary">This area is reserved for the upcoming major academic thesis project. Technical breakdown and impact metrics will be inserted here.</p>
+              <div className="proj-accordion">
+                <ul className="proj-detail-list">
+                  <li><strong>Core Tech:</strong> Placeholder.</li>
+                  <li><strong>Methodology:</strong> Placeholder.</li>
+                  <li><strong>Architecture:</strong> Placeholder.</li>
+                </ul>
+              </div>
+              <button className="proj-expand-btn">+ View Details</button>
+            </div>
+            <div className="proj-card-tags">
+              <span className="proj-tag">Awaiting</span><span className="proj-tag">Stack</span>
+            </div>
+          </div>
+          */}
+
+          {/* 03 SupplySense */}
+          <div className="proj-card reveal" data-project="2" ref={cardRefs[2]}>
+            <div className="proj-card-visual">
+              <canvas ref={canvasRefs[2]}></canvas>
+              <img src={SupplySenseImg} alt="SupplySense" className="proj-card-img" />
+              <span className="proj-card-num">03</span>
               <span className="proj-card-status status-live">● Live</span>
             </div>
             <div className="proj-card-body">
               <div className="proj-card-title">SupplySense</div>
-              <div className="proj-impact-line">Smart reorder logic with role-based access &amp; audit trail</div>
+              <div className="proj-impact-line">Smart reorder logic &amp; audit trail</div>
               <p className="proj-card-summary">Full-stack inventory management and reorder planning platform designed for small businesses.</p>
               <div className="proj-accordion">
                 <ul className="proj-detail-list">
                   <li><strong>Role-Based Auth:</strong> Secure JWT authentication across Manager and Viewer roles with scoped permissions.</li>
-                  <li><strong>Smart ROP Engine:</strong> Calculates reorder points based on lead time, safety stock, and average demand.</li>
+                  <li><strong>Smart ROP Engine:</strong> Calculates reorder points based on lead time, safety stock, and demand.</li>
                   <li><strong>Audit Trail:</strong> Full history of all stock adjustments and reorder events.</li>
-                  <li><strong>Reporting:</strong> Automated CSV export for inventory and reorder reports.</li>
                 </ul>
                 <div className="proj-accordion-links">
                   <a href="https://suppliesense-frontend.onrender.com/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">
@@ -238,29 +273,26 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
             <div className="proj-card-tags">
               <span className="proj-tag">Next.js</span><span className="proj-tag">React</span>
-              <span className="proj-tag">TypeScript</span><span className="proj-tag">FastAPI</span>
-              <span className="proj-tag">PostgreSQL</span><span className="proj-tag">JWT</span>
-              <span className="proj-tag">Tailwind CSS</span>
+              <span className="proj-tag">FastAPI</span><span className="proj-tag">PostgreSQL</span>
             </div>
           </div>
 
-          {/* 03 Duty Hours Tracker */}
-          <div className="proj-card reveal" data-project="2" ref={cardRefs[2]}>
+          {/* 04 Duty Hours Tracker */}
+          <div className="proj-card reveal" data-project="3" ref={cardRefs[3]}>
             <div className="proj-card-visual">
-              <canvas ref={canvasRefs[2]}></canvas>
+              <canvas ref={canvasRefs[3]}></canvas>
               <img src={DutyTrackerImg} alt="Duty Hours Tracker" className="proj-card-img" />
-              <span className="proj-card-num">03</span>
+              <span className="proj-card-num">04</span>
               <span className="proj-card-status status-live">● Live</span>
             </div>
             <div className="proj-card-body">
               <div className="proj-card-title">Duty Hours Tracker</div>
-              <div className="proj-impact-line">Replaces manual spreadsheet tracking for DLSU-D scholars</div>
-              <p className="proj-card-summary">Lightweight, zero-infrastructure web app for Financial Aid Scholars of DLSU–Dasmariñas to log and track required duty hours.</p>
+              <div className="proj-impact-line">Replaces manual spreadsheet tracking</div>
+              <p className="proj-card-summary">Lightweight, zero-infrastructure web app for Financial Aid Scholars of DLSU-D to log and track required duty hours.</p>
               <div className="proj-accordion">
                 <ul className="proj-detail-list">
                   <li><strong>Client-Side Storage:</strong> Runs entirely on localStorage — no backend needed.</li>
                   <li><strong>Rule-Based Validation:</strong> Configurable duty schedule validation and automatic hour computation.</li>
-                  <li><strong>Event Tracking:</strong> Credit tracking for different event types with printable CSV export.</li>
                 </ul>
                 <div className="proj-accordion-links">
                   <a href="https://timothydevcastro.github.io/scholar-duty-tracker/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">
@@ -277,7 +309,44 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
             <div className="proj-card-tags">
               <span className="proj-tag">HTML5</span><span className="proj-tag">CSS3</span>
-              <span className="proj-tag">JavaScript</span><span className="proj-tag">GitHub Pages</span>
+              <span className="proj-tag">JavaScript</span>
+            </div>
+          </div>
+
+          {/* 05 SCAN_ARCHIVE PRO */}
+          <div className="proj-card reveal" data-project="4" ref={cardRefs[4]}>
+            <div className="proj-card-visual">
+              <canvas ref={canvasRefs[4]}></canvas>
+              <img src={ScanArchiveImg} alt="SCAN_ARCHIVE PRO" className="proj-card-img" />
+              <span className="proj-card-num">05</span>
+              <span className="proj-card-status status-live">● Live</span>
+            </div>
+            <div className="proj-card-body">
+              <div className="proj-card-title">SCAN_ARCHIVE PRO</div>
+              <div className="proj-impact-line">Sub-second multi-cloud AI object scanner</div>
+              <p className="proj-card-summary">A high-fidelity AI object scanner designed to deliver streamlined trivia metadata via Groq LLMs and FLUX imagery. Built with bulletproof fail-safe routing and IndexedDB persistence.</p>
+              <div className="proj-accordion">
+                <ul className="proj-detail-list">
+                  <li><strong>Multi-Cloud Intelligence:</strong> Orchestrated Groq (Llama-3.3) for NLP and Hugging Face (FLUX) for synthesis.</li>
+                  <li><strong>Fail-Safe Architecture:</strong> Local simulation fallbacks ensure 100% uptime despite cloud rate-limits.</li>
+                  <li><strong>Persisted Sessions:</strong> Utilizes browser-based IndexedDB for keeping scan histories across reloads.</li>
+                </ul>
+                <div className="proj-accordion-links">
+                  <a href="https://scan-archive.vercel.app/" target="_blank" rel="noreferrer" className="proj-drawer-link primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    View Site
+                  </a>
+                  <a href="https://github.com/timothydevcastro/SCAN_ARCHIVE" target="_blank" rel="noreferrer" className="proj-drawer-link secondary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 00-.9-2.4c3-.3 6.2-1.5 6.2-6.8a5.3 5.3 0 00-1.4-3.7 5 5 0 00-.1-3.6s-1.2-.4-3.8 1.4a13 13 0 00-7 0C6.4 1.7 5.2 2.1 5.2 2.1a5 5 0 00-.1 3.6A5.3 5.3 0 003.7 9.1c0 5.3 3.2 6.5 6.2 6.8a3.4 3.4 0 00-.9 2.4V22"></path></svg>
+                    Source
+                  </a>
+                </div>
+              </div>
+              <button className="proj-expand-btn">+ View Details</button>
+            </div>
+            <div className="proj-card-tags">
+              <span className="proj-tag">React</span><span className="proj-tag">Tailwind CSS</span>
+              <span className="proj-tag">Groq API</span><span className="proj-tag">IndexedDB</span>
             </div>
           </div>
 
