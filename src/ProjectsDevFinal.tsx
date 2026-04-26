@@ -4,6 +4,8 @@ import KuCognitionImg from './assets/images/mockup_kucognition.png';
 import SupplySenseImg from './assets/images/mockup_supply.png';
 import DutyTrackerImg from './assets/images/mockup_dutytracker.png';
 import ScanArchiveImg from './assets/images/mockup_scanarchive.png';
+import AlumniPortalImg from './assets/images/mockup_alumniportal.png';
+import ThesisImg from './assets/images/mockup_thesis.png';
 
 interface ProjectDef {
   colors: string[];
@@ -16,6 +18,7 @@ const PROJECTS: ProjectDef[] = [
   { colors: ['#d97706', '#fbbf24', '#16a34a', '#4ade80'], shape: 'lines'   },
   { colors: ['#c026d3', '#f472b6', '#3b82f6', '#2dd4bf'], shape: 'organic' },
   { colors: ['#0f172a', '#475569', '#3b82f6', '#38bdf8'], shape: 'lines'   },
+  { colors: ['#059669', '#10b981', '#6366f1', '#818cf8'], shape: 'grid'    },
 ];
 
 function drawPattern(canvas: HTMLCanvasElement, project: ProjectDef) {
@@ -85,8 +88,10 @@ const ProjectsDevFinal: React.FC = () => {
     useRef<HTMLCanvasElement>(null),
     useRef<HTMLCanvasElement>(null),
     useRef<HTMLCanvasElement>(null),
+    useRef<HTMLCanvasElement>(null),
   ];
   const cardRefs = [
+    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -212,40 +217,72 @@ const ProjectsDevFinal: React.FC = () => {
               <span className="proj-tag">NLP</span>
             </div>
           </div>
-
-          {/* 
-             02 Thesis (Placeholder) — FEATURED 
+          
+          {/* 02 CICS Alumni Management System — FEATURED */}
           <div className="proj-card featured reveal" data-project="1" ref={cardRefs[1]}>
             <div className="proj-card-visual">
               <canvas ref={canvasRefs[1]}></canvas>
+              <img src={AlumniPortalImg} alt="CICS Alumni Management System" className="proj-card-img" />
               <span className="proj-card-num">02</span>
-              <span className="proj-card-status status-wip">◐ In Progress</span>
+              <span className="proj-card-status status-live">● Serviced</span>
             </div>
             <div className="proj-card-body">
-              <div className="proj-card-title">[ Thesis Project pending details ]</div>
-              <div className="proj-impact-line">Pending major impact statement from user</div>
-              <p className="proj-card-summary">This area is reserved for the upcoming major academic thesis project. Technical breakdown and impact metrics will be inserted here.</p>
+              <div className="proj-card-title">CICS Alumni Management System</div>
+              <div className="proj-impact-line">Official management system for DLSU-D CICS Department</div>
+              <p className="proj-card-summary">A robust, full-stack application engineered to manage and track the professional trajectories of alumni from the College of Information and Computing Sciences.</p>
               <div className="proj-accordion">
                 <ul className="proj-detail-list">
-                  <li><strong>Core Tech:</strong> Placeholder.</li>
-                  <li><strong>Methodology:</strong> Placeholder.</li>
-                  <li><strong>Architecture:</strong> Placeholder.</li>
+                  <li><strong>Departmental Service:</strong> Custom-built specifically for the CICS department at DLSU-D for real-time record auditing.</li>
+                  <li><strong>Google Cloud Integration:</strong> Implemented a high-performance API bridge using Google Apps Script to synchronize data with secure departmental spreadsheets.</li>
+                  <li><strong>Administrative Portal:</strong> Developed a protected dashboard for faculty featuring batch filtering, course tracking (IT/CS), and employment auditing.</li>
+                  <li><strong>Next.js 14 Architecture:</strong> Utilized App Router and Server Components for secure, high-speed data fetching.</li>
+                </ul>
+                <p className="proj-disclaimer">* Deployment links and source code are restricted due to data confidentiality and departmental security protocols.</p>
+              </div>
+              <button className="proj-expand-btn">+ View Details</button>
+            </div>
+            <div className="proj-card-tags">
+              <span className="proj-tag">Next.js 14</span><span className="proj-tag">TypeScript</span>
+              <span className="proj-tag">Tailwind CSS</span><span className="proj-tag">Google Apps Script</span>
+              <span className="proj-tag">Shadcn UI</span>
+            </div>
+          </div>
+
+          {/* 03 SWAFO Violation Management System — FEATURED */}
+          <div className="proj-card featured reveal" data-project="2" ref={cardRefs[2]}>
+            <div className="proj-card-visual">
+              <canvas ref={canvasRefs[2]}></canvas>
+              <img src={ThesisImg} alt="SWAFO Violation Management System" className="proj-card-img" />
+              <span className="proj-card-num">03</span>
+              <span className="proj-card-status status-wip">◐ CS Thesis</span>
+            </div>
+            <div className="proj-card-body">
+              <div className="proj-card-title">SWAFO Violation Management & AI Analytics</div>
+              <div className="proj-impact-line">Algorithmic behavioral monitoring and case escalation for DLSU-D</div>
+              <p className="proj-card-summary">A two-module computer science thesis modernizing student discipline. It integrates an AI-based uniform compliance detection pipeline with a highly intelligent, full-stack violation management web portal.</p>
+              <div className="proj-accordion">
+                <ul className="proj-detail-list">
+                  <li><strong>Hybrid Semantic Retrieval:</strong> Built an in-memory vector space engine using Gemini embeddings and Cosine Similarity to map natural language incidents to the 82-rule university handbook, cutting search latency by ~90%.</li>
+                  <li><strong>Deterministic Escalation Algorithm:</strong> Developed state-based logic that tracks offense frequency and auto-executes complex, multi-tiered disciplinary escalations per institutional policy.</li>
+                  <li><strong>Duplicate Case Detection:</strong> Engineered a temporal thresholding and exact-match algorithm that triggers an interactive human-in-the-loop override to prevent database inflation.</li>
+                  <li><strong>Temporal Analytics Aggregation:</strong> Implemented sliding-window time-series aggregation to rank compliance hotspots and drive real-time visualization dashboards.</li>
                 </ul>
               </div>
               <button className="proj-expand-btn">+ View Details</button>
             </div>
             <div className="proj-card-tags">
-              <span className="proj-tag">Awaiting</span><span className="proj-tag">Stack</span>
+              <span className="proj-tag">React 19</span><span className="proj-tag">Django REST</span>
+              <span className="proj-tag">PostgreSQL</span><span className="proj-tag">Gemini Embeddings</span>
+              <span className="proj-tag">Computer Vision</span>
             </div>
           </div>
-          */}
 
-          {/* 03 SupplySense */}
-          <div className="proj-card reveal" data-project="2" ref={cardRefs[2]}>
+          {/* 04 SupplySense */}
+          <div className="proj-card reveal" data-project="3" ref={cardRefs[3]}>
             <div className="proj-card-visual">
-              <canvas ref={canvasRefs[2]}></canvas>
+              <canvas ref={canvasRefs[3]}></canvas>
               <img src={SupplySenseImg} alt="SupplySense" className="proj-card-img" />
-              <span className="proj-card-num">03</span>
+              <span className="proj-card-num">04</span>
               <span className="proj-card-status status-live">● Live</span>
             </div>
             <div className="proj-card-body">
@@ -277,12 +314,12 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
           </div>
 
-          {/* 04 Duty Hours Tracker */}
-          <div className="proj-card reveal" data-project="3" ref={cardRefs[3]}>
+          {/* 05 Duty Hours Tracker */}
+          <div className="proj-card reveal" data-project="4" ref={cardRefs[4]}>
             <div className="proj-card-visual">
-              <canvas ref={canvasRefs[3]}></canvas>
+              <canvas ref={canvasRefs[4]}></canvas>
               <img src={DutyTrackerImg} alt="Duty Hours Tracker" className="proj-card-img" />
-              <span className="proj-card-num">04</span>
+              <span className="proj-card-num">05</span>
               <span className="proj-card-status status-live">● Live</span>
             </div>
             <div className="proj-card-body">
@@ -313,12 +350,12 @@ const ProjectsDevFinal: React.FC = () => {
             </div>
           </div>
 
-          {/* 05 SCAN_ARCHIVE PRO */}
-          <div className="proj-card reveal" data-project="4" ref={cardRefs[4]}>
+          {/* 06 SCAN_ARCHIVE PRO */}
+          <div className="proj-card reveal" data-project="5" ref={cardRefs[5]}>
             <div className="proj-card-visual">
-              <canvas ref={canvasRefs[4]}></canvas>
+              <canvas ref={canvasRefs[5]}></canvas>
               <img src={ScanArchiveImg} alt="SCAN_ARCHIVE PRO" className="proj-card-img" />
-              <span className="proj-card-num">05</span>
+              <span className="proj-card-num">06</span>
               <span className="proj-card-status status-live">● Live</span>
             </div>
             <div className="proj-card-body">
